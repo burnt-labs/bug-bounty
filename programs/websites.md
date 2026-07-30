@@ -25,9 +25,6 @@ if its hostname appears below.
 | `auth.burnt.com` | Authentication |
 | `auth-beta.burnt.com` | Authentication (beta) |
 | `settings.burnt.com` | Account settings |
-| `staking.burnt.com` | Staking |
-| `staking.mainnet.burnt.com` | Staking |
-| `staking.xion.burnt.com` | Staking |
 | `explorer.burnt.com` | Block explorer — see note below |
 | `explorer.mainnet.burnt.com` | Block explorer — see note below |
 | `explorer.xion.burnt.com` | Block explorer — see note below |
@@ -69,6 +66,8 @@ output, without demonstrated exploitability, are not rewarded.
 - Any hostname not listed above, including testnet and staging hosts
   (`*.testnet.burnt.com` and equivalents), the developer portal, admin
   interfaces, faucets, marketing sites, and internal tooling
+- Decommissioned properties that are no longer in use, including the staking
+  interface at `staking.burnt.com` and its variants
 - Public blockchain RPC, REST, gRPC, and Tendermint RPC endpoints
 - Backend APIs and services. These are not currently covered by any program
 - Third-party services and infrastructure
