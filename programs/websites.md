@@ -1,53 +1,71 @@
-# Bug Bounty — Websites and Applications
+# Bug Bounty — Websites
 
-Covers the production web properties operated by Burnt Labs where a
-vulnerability could result in user harm, credential compromise, or unauthorized
-transaction execution.
+Covers the informational and marketing web properties operated by Burnt Labs.
+These properties do not hold user sessions, manage keys, or construct
+transactions.
+
+This is a **lower tier than [Applications and SDKs](applications.md)**, and the
+severity ladder below reflects that. If a finding concerns `app.burnt.com`,
+`auth.burnt.com`, `settings.burnt.com`, the account abstraction API, or
+`xion.js`, it belongs to that program instead.
 
 Read the [program terms](../README.md) first — reporting channels, reward
 policy, KYC requirement, disclosure rules, and safe harbour apply to this
 program.
 
-> **Reporting channel.** Most repositories behind these properties are private,
-> so GitHub private vulnerability reporting is not available for them. Report
-> findings in this program to [security@burnt.com](mailto:security@burnt.com).
-> Eligibility follows the asset, not the channel — reporting by email does not
-> affect it.
+> **Reporting channel.** Report findings in this program to
+> [security@burnt.com](mailto:security@burnt.com).
 
 ## Assets in Scope
 
-Scope is defined by **hostname**, not by repository. A property is in scope only
-if its hostname appears below.
+Unlike the other programs, this one is **not defined by an enumerated list**.
+Informational properties come and go — campaign pages, event microsites,
+documentation sections — and an allowlist would go stale faster than we could
+maintain it.
 
-| Hostname | Property |
-| -------- | -------- |
-| `app.burnt.com` | XION web app — staking, governance, and smart account transactions |
-| `auth.burnt.com` | Authentication |
-| `auth-beta.burnt.com` | Authentication (beta) |
-| `settings.burnt.com` | Account settings |
-| `explorer.burnt.com` | Block explorer — see note below |
-| `explorer.mainnet.burnt.com` | Block explorer — see note below |
-| `explorer.xion.burnt.com` | Block explorer — see note below |
+A property is in scope if **all** of the following hold:
 
-**Explorer note.** The block explorer is derived from an upstream open source
-project. Only defects originating in Burnt Labs' own code are in scope.
-Vulnerabilities present in the upstream project should be reported to that
-project.
+1. It is operated by Burnt Labs and reachable on the public internet
+2. It is a production property, not a preview, staging, or testnet deployment
+3. It is **informational or marketing in nature** — it presents content. It does
+   not authenticate users, hold sessions, manage keys or authenticators, or
+   construct, sign, or broadcast transactions
+
+The third condition is the boundary that matters. The moment a property does any
+of those things it is an application, and it is in scope only if it is named in
+[Applications and SDKs](applications.md) — not here, and not by default.
+
+The clearest examples are the marketing site at `burnt.com` and `www.burnt.com`,
+and the developer documentation at `docs.burnt.com`.
+
+If you are unsure which program a property falls under, report it and say so.
+We would rather triage the question than lose the finding.
+
+**Third-party hosting.** Several of these properties run on third-party
+platforms — `docs.burnt.com` is hosted on GitBook, for example. Only Burnt Labs'
+own content and configuration are in scope. Vulnerabilities in the underlying
+platform should be reported to that platform.
 
 ## Severity
 
-| Severity     | Description                                                                                                                                                                                                                                                                                             |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **CRITICAL** | Full account takeover or unauthorized transaction execution that does not require the victim to approve or confirm a security-sensitive action. The attack must succeed through passive exploitation — page load, background request — or be embedded in what appears to the victim as a routine interaction |
-| **HIGH**     | Account or session compromise requiring limited, non-suspicious user interaction such as visiting a link or loading a page. Cross-site scripting with demonstrated ability to initiate or manipulate transactions. Significant data exposure affecting individual users                                    |
-| **MEDIUM**   | Attacks requiring the victim to take a meaningful, security-relevant action — clicking through a confirmation, explicitly granting access, or following multi-step instructions. Limited data exposure or access control bypass requiring specific preconditions. CSRF with demonstrated impact on account state |
-| **LOW**      | Valid security issue with no direct risk to accounts or user data, representing a meaningful hardening opportunity                                                                                                                                                                                       |
+These properties hold nothing an attacker wants directly. The risk that matters
+is a visitor being served attacker-controlled content and carrying the
+consequences to a property that *does* hold something — connecting a wallet,
+following a link to an authentication flow, or downloading a tampered artifact.
+Severity is assessed on that path, not on the website in isolation.
 
-Only **High** and **Critical** are reward eligible.
+| Severity     | Description                                                                                                                                                                                                                       |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **CRITICAL** | Not reachable in this program. A finding that warrants Critical necessarily involves an asset in another program — report it there                                                                                                 |
+| **HIGH**     | Persistent attacker-controlled script or content served to ordinary visitors, where the demonstrated consequence is theft of funds or credentials — a wallet drainer, a convincing redirect into a credential-harvesting authentication flow, or a tampered download. Subdomain takeover of an in-scope hostname |
+| **MEDIUM**   | Reflected or self-limiting content injection requiring an unusual link or a security-relevant victim action. Exposure of non-public but non-sensitive information. Access control bypass on a content management path              |
+| **LOW**      | Valid security issue with no demonstrated path to user harm, representing a meaningful hardening opportunity                                                                                                                       |
 
-Reports where the victim must be tricked into explicitly granting access,
-authorizing a transaction, or clicking through a confirmation are **not**
-Critical.
+Only **High** is reward eligible in this program.
+
+A finding is not High merely because injection is possible. The report must
+carry it through to the consequence — show the drainer, the harvest, or the
+tampered artifact.
 
 ## Proof of Concept
 
@@ -55,34 +73,44 @@ A proof of concept demonstrating the vulnerability is required. **Do not
 demonstrate it against production** — testing production disqualifies the
 report. Run the property locally or against your own deployment.
 
-Screenshots or a video walkthrough showing end-to-end exploitation are expected
-for High and Critical reports. Reports consisting only of automated scanner
-output, without demonstrated exploitability, are not rewarded.
+Screenshots or a video walkthrough are expected for High reports, showing the
+full path from injection to consequence. Reports consisting only of automated
+scanner output, without demonstrated exploitability, are not rewarded.
+
+For a subdomain takeover claim, include the dangling record and evidence you
+could serve content — do not serve anything beyond a benign proof file, and do
+not leave it in place.
 
 ## Out of Scope
 
 **Assets**
 
-- Any hostname not listed above, including testnet and staging hosts
-  (`*.testnet.burnt.com` and equivalents), the developer portal, admin
-  interfaces, faucets, marketing sites, and internal tooling
-- Decommissioned properties that are no longer in use, including the staking
-  interface at `staking.burnt.com` and its variants
-- Public blockchain RPC, REST, gRPC, and Tendermint RPC endpoints
-- Backend APIs and services. These are not currently covered by any program
-- Third-party services and infrastructure
-- Upstream open source code in the block explorer
+- Any property failing one of the three conditions above. In particular:
+  preview, staging, and testnet deployments; the developer portal at
+  `dev.burnt.com`; admin interfaces; faucets; and internal tooling, whether or
+  not it is reachable publicly
+- Anything that authenticates users, holds sessions, manages keys or
+  authenticators, or touches transactions. Those are applications, and are in
+  scope only where [Applications and SDKs](applications.md) names them
+- The block explorer. It is derived from an upstream open source project and is
+  not currently covered by any program
+- The GitBook platform, and any third-party analytics, forms, chat widgets, or
+  embeds loaded by these properties
+- Decommissioned properties that are no longer in use
+- Social media accounts, community channels, and content published on
+  third-party platforms
 
 **Vulnerability classes**
 
-- Clickjacking. Transaction signing provides a second confirmation layer that
-  mitigates the attack surface
-- Open redirects after authentication that do not leak tokens or credentials
+- Missing security headers, cookie flags, and TLS configuration findings where
+  no exploitable impact on a visitor is demonstrated
+- Clickjacking. These properties carry no state-changing actions
+- Open redirects that do not leak tokens or credentials
 - Self-XSS requiring the attacker to execute code in their own browser session
-- Issues requiring physical access to the victim's device
+- Content spoofing and text injection without script execution
+- Email configuration findings — SPF, DKIM, and DMARC records
+- Rate limiting, enumeration, and denial of service
+- Outdated software versions without a demonstrated working exploit
+- Issues requiring physical access to the visitor's device
 - Social engineering
-- Denial of service
-- Missing security headers where no exploitable impact is demonstrated
-- Theoretical vulnerabilities without a demonstrated attack path and measurable
-  user impact
 - Best practices and informational findings

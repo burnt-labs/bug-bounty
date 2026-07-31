@@ -86,7 +86,7 @@ behave according to their role.
 - Example and demo contracts
 - Third-party contracts deployed on XION by external teams
 - Chain node modules — see [Blockchain / DLT](blockchain.md)
-- Frontend applications — see [Websites and Applications](websites.md)
+- Applications and the client SDK — see [Applications and SDKs](applications.md)
 - Upstream dependencies. Vulnerabilities in CosmWasm or the Cosmos SDK are not
   eligible here; only code originating in the in-scope contracts is covered
 
