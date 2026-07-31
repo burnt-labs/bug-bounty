@@ -23,16 +23,21 @@ exclusions. The terms below apply to all four.
 
 ## How to Report
 
-**Reward eligibility follows the asset, not the channel.** An asset covered by
-one of the programs above is eligible however you report it. An asset covered by
-none of them is not eligible, however you report it — we still want the report,
-and we will investigate and fix genuine issues.
+**Reward eligibility follows the asset, not the channel.** An asset explicitly
+named in one of the programs above is eligible however you report it. An asset
+named in none of them is not eligible, however you report it — we still want the
+report, and we will investigate and fix genuine issues.
 
-Three of the four programs define scope by naming assets individually.
-[Websites](programs/websites.md) is the exception: it covers a category of
-property rather than a list, because informational content changes too often for
-a list to stay accurate. Where a program defines its scope categorically, the
-conditions it states are what determine coverage.
+Every program lists its assets explicitly. If an asset is not on a list, it is
+not in scope and testing it is not authorized — there is no category, pattern,
+or family of hostnames that confers scope on something we have not named. When
+in doubt, ask at [security@burnt.com](mailto:security@burnt.com) **before**
+testing.
+
+A program may pair a scoped production asset with an explicitly named
+non-production testing endpoint. That endpoint authorizes testing only; it is not
+a separate reward-eligible asset. Submit the report against the paired production
+asset and explain why the demonstrated issue applies there.
 
 There are two channels. **Please choose one.**
 
@@ -61,8 +66,9 @@ disclosure process, after severity has been assessed against demonstrated impact
 
 - Bounties are awarded for findings assessed as **High** or **Critical**. Medium
   and Low findings are valued and will be fixed, but are not rewarded.
-- Only assets covered by a program above are eligible, as that program defines
-  its scope.
+- Only production assets explicitly named in a program above are eligible.
+  Named testing endpoints authorize safe reproduction but are not separately
+  reward eligible.
 - **Testing against production disqualifies the report from any bounty.**
 - Collecting a bounty requires completing a **KYC process**. We cannot pay
   reporters in sanctioned jurisdictions.
@@ -98,8 +104,11 @@ inputs, steps, or code that exhibit it — is not actionable.
 ## Responsible Disclosure
 
 - Do not exploit a vulnerability beyond what is necessary to confirm it exists
-- **Do not test against production systems.** This includes XION mainnet, XION
-  testnets, and live web properties. Testing production disqualifies the report
+- **Do not test against production systems.** This includes XION mainnet and live
+  production web properties. Testing production disqualifies the report
+- Use only testing endpoints explicitly named by the applicable program, a local
+  environment, or infrastructure you control. Other XION testnets, staging,
+  preview, and development deployments are not authorized by implication
 - Do not access, modify, or exfiltrate user data
 - Do not disrupt or degrade our networks, data, or services
 - Do not disclose publicly before a fix is confirmed and deployed
@@ -132,9 +141,14 @@ vulnerabilities in good faith under this policy, do not exploit beyond what is
 necessary to confirm the finding, do not access or disclose user data, and do
 not disrupt production systems.
 
-Authorization to actively test extends only to the assets the programs above
-cover, and does not extend to production. Reporting a vulnerability you
-encountered incidentally is always welcome.
+**Naming a production asset establishes eligibility, not permission to test that
+production system.** Authorization to actively test extends only to testing
+endpoints explicitly named by the applicable program, local environments, and
+infrastructure you control. Nothing else is authorized by implication. If you
+are unsure whether something is covered, ask before you test it.
+
+Reporting a vulnerability you encountered incidentally is always welcome, and
+carries no expectation that you were authorized to be there.
 
 ## Recognition
 
