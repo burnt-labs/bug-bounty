@@ -30,16 +30,13 @@ the code, not to extend scope to everything that repository builds.
 | --------------------------------- | ------------------------------------------------------------------ |
 | `app.burnt.com`                   | XION web app — staking, governance, and smart account transactions |
 | `auth.burnt.com`                  | Authentication and smart account creation                          |
-| `auth-beta.burnt.com`             | Authentication (beta)                                              |
-| `auth-beta.mainnet.burnt.com`     | Authentication (beta)                                              |
 | `settings.burnt.com`              | Account settings and authenticator management                      |
 | `aa-api.mainnet.burnt.com`        | Account abstraction API                                            |
 | `aa-api.xion-mainnet-1.burnt.com` | Account abstraction API                                            |
 
 The code behind these hostnames lives in `burnt-labs/xion-frontends`
-(`app.burnt.com`), `burnt-labs/xion-dashboard-app` (`auth`, `auth-beta`, and
-`settings`), and `burnt-labs/account-abstraction-api` (`aa-api`). The first two
-are private.
+(`app.burnt.com`), `burnt-labs/xion-dashboard-app` (`auth` and `settings`), and
+`burnt-labs/account-abstraction-api` (`aa-api`). The first two are private.
 
 **`xion-frontends` note.** That repository is a monorepo, and only
 `apps/xion-app`, serving `app.burnt.com`, is in scope. The other applications it
@@ -122,7 +119,8 @@ running integration that exercises it, is not sufficient on its own.
   and is not currently covered by any program
 - Informational and marketing web properties — see [Websites](websites.md)
 - Decommissioned properties that are no longer in use, including the staking
-  interface at `staking.burnt.com` and its variants
+  interface at `staking.burnt.com` and the beta authentication hosts at
+  `auth-beta.burnt.com` and `auth-beta.mainnet.burnt.com`, and their variants
 - Public blockchain RPC, REST, gRPC, and Tendermint RPC endpoints
 - Backend APIs and services other than the account abstraction API named above
 - Example apps, demos, and test fixtures in `xion.js`, and any
