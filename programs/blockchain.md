@@ -15,11 +15,26 @@ program.
 | [`burnt-labs/xion`](https://github.com/burnt-labs/xion) | XION chain node and all custom Cosmos SDK modules |
 | [`burnt-labs/abstract-account`](https://github.com/burnt-labs/abstract-account) | Abstract account module and authenticator contract infrastructure |
 | [`burnt-labs/barretenberg-go`](https://github.com/burnt-labs/barretenberg-go) | Go bindings and proof verification wrappers for the Barretenberg ZK proving library |
+| [`burnt-labs/wasmd`](https://github.com/burnt-labs/wasmd) | XION's fork of `CosmWasm/wasmd` — the contract execution module. **Burnt Labs' patches only** |
+| [`burnt-labs/ibc-go`](https://github.com/burnt-labs/ibc-go) | XION's fork of `cosmos/ibc-go`, `08-wasm` light client. **Burnt Labs' patches only** |
+| [`burnt-labs/tokenfactory`](https://github.com/burnt-labs/tokenfactory) | XION's fork of `strangelove-ventures/tokenfactory`. **Burnt Labs' patches only** |
 
 Scope applies to the current mainnet release. Findings affecting only deprecated
 or end-of-life versions, or already remediated in the currently deployed mainnet
 version, are not eligible regardless of whether the fix was publicly announced.
 Verify exploitability against the currently deployed version before submitting.
+
+### Fork Scope
+
+The last three repositories are forks the chain node builds against through
+`replace` directives in [`burnt-labs/xion`](https://github.com/burnt-labs/xion)'s
+`go.mod`. They ship on mainnet under `-xion.N` version tags.
+
+**Only the delta between the fork and its upstream base is in scope.** Determine
+the upstream base from the version tag — `v0.61.10-xion.1` is based on upstream
+`v0.61.10` — and diff against it. A finding that reproduces on the unmodified
+upstream tag belongs to the upstream project, not to this program, and is not
+eligible here regardless of its impact on XION.
 
 ## Severity
 
@@ -89,7 +104,7 @@ within the specified protocol parameters.
 **Assets**
 
 - Smart contracts — see [Core Protocol Contracts](contracts.md)
-- Frontend applications — see [Websites and Applications](websites.md)
+- Applications and the client SDK — see [Applications and SDKs](applications.md)
 - Third-party infrastructure, RPC providers, and external dependencies
 - Public blockchain RPC, REST, gRPC, and Tendermint RPC endpoints. These expose
   blockchain state by design and are operated by validators and node operators
