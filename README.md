@@ -13,19 +13,26 @@ applies.
 
 | Program | Covers |
 | ------- | ------ |
-| [Blockchain / DLT](programs/blockchain.md) | XION chain node, custom Cosmos SDK modules, abstract account system, ZK proof verification bindings |
+| [Blockchain / DLT](programs/blockchain.md) | XION chain node, custom Cosmos SDK modules, the forks the node builds against, abstract account system, ZK proof verification bindings |
 | [Core Protocol Contracts](programs/contracts.md) | The account and treasury contracts |
-| [Websites and Applications](programs/websites.md) | Production web properties operated by Burnt Labs |
+| [Applications and SDKs](programs/applications.md) | Production applications operated by Burnt Labs, and the `xion.js` client SDK |
+| [Websites](programs/websites.md) | Informational and marketing web properties, at a lower tier |
 
 Each program defines its own assets, proof of concept requirements, and
-exclusions. The terms below apply to all three.
+exclusions. The terms below apply to all four.
 
 ## How to Report
 
-**Reward eligibility follows the asset, not the channel.** An asset named in one
-of the programs above is eligible however you report it. An asset named in none
-of them is not eligible, however you report it — we still want the report, and
-we will investigate and fix genuine issues.
+**Reward eligibility follows the asset, not the channel.** An asset covered by
+one of the programs above is eligible however you report it. An asset covered by
+none of them is not eligible, however you report it — we still want the report,
+and we will investigate and fix genuine issues.
+
+Three of the four programs define scope by naming assets individually.
+[Websites](programs/websites.md) is the exception: it covers a category of
+property rather than a list, because informational content changes too often for
+a list to stay accurate. Where a program defines its scope categorically, the
+conditions it states are what determine coverage.
 
 There are two channels. **Please choose one.**
 
@@ -54,7 +61,8 @@ disclosure process, after severity has been assessed against demonstrated impact
 
 - Bounties are awarded for findings assessed as **High** or **Critical**. Medium
   and Low findings are valued and will be fixed, but are not rewarded.
-- Only assets explicitly named in a program above are eligible.
+- Only assets covered by a program above are eligible, as that program defines
+  its scope.
 - **Testing against production disqualifies the report from any bounty.**
 - Collecting a bounty requires completing a **KYC process**. We cannot pay
   reporters in sanctioned jurisdictions.
@@ -124,8 +132,8 @@ vulnerabilities in good faith under this policy, do not exploit beyond what is
 necessary to confirm the finding, do not access or disclose user data, and do
 not disrupt production systems.
 
-Authorization to actively test extends only to the assets named in the programs
-above, and does not extend to production. Reporting a vulnerability you
+Authorization to actively test extends only to the assets the programs above
+cover, and does not extend to production. Reporting a vulnerability you
 encountered incidentally is always welcome.
 
 ## Recognition
