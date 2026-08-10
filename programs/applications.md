@@ -11,41 +11,37 @@ Read the [program terms](../README.md) first — reporting channels, reward
 policy, KYC requirement, disclosure rules, and safe harbour apply to this
 program.
 
-> **Reporting channel.** Most repositories behind these applications are
-> private, so GitHub private vulnerability reporting is not available for them.
-> Report findings in this program to
-> [security@burnt.com](mailto:security@burnt.com). Eligibility follows the asset,
-> not the channel — reporting by email does not affect it. `xion.js` is public
-> and does accept private vulnerability reporting.
+> **Reporting channel.** Report findings against the hosted applications to
+> [security@burnt.com](mailto:security@burnt.com). For `xion.js`, use GitHub
+> private vulnerability reporting on that repository. Eligibility follows the
+> asset, not the channel — the choice of channel does not affect it.
 
 ## Assets in Scope
 
-An asset is in scope only if it appears below. For hosted applications the
-**mainnet hostname is the asset** — the source repository is named to identify
-the code, not to extend scope to everything that repository builds.
+**An asset is in scope only if it is listed below.** This list is exhaustive.
+Nothing is in scope by resemblance, by sharing a domain, or by being reachable
+from an asset that is listed.
 
 ### Hosted Applications
 
-| Hostname                          | Application                                                        |
-| --------------------------------- | ------------------------------------------------------------------ |
-| `app.burnt.com`                   | XION web app — staking, governance, and smart account transactions |
-| `auth.burnt.com`                  | Authentication and smart account creation                          |
-| `auth-beta.burnt.com`             | Authentication (beta)                                              |
-| `auth-beta.mainnet.burnt.com`     | Authentication (beta)                                              |
-| `settings.burnt.com`              | Account settings and authenticator management                      |
-| `aa-api.mainnet.burnt.com`        | Account abstraction API                                            |
-| `aa-api.xion-mainnet-1.burnt.com` | Account abstraction API                                            |
+The **mainnet hostname identifies the scoped production asset**, but it is not an
+authorized penetration-testing target. Perform active testing only against the
+paired testnet hostname, a local instance, or infrastructure you control.
 
-The code behind these hostnames lives in `burnt-labs/xion-frontends`
-(`app.burnt.com`), `burnt-labs/xion-dashboard-app` (`auth`, `auth-beta`, and
-`settings`), and `burnt-labs/account-abstraction-api` (`aa-api`). The first two
-are private.
+| Production asset — do not test   | Authorized testing hostname    | Application                                                        |
+| -------------------------------- | ------------------------------ | ------------------------------------------------------------------ |
+| `app.burnt.com`                  | `app.testnet.burnt.com`        | XION web app — staking, governance, and smart account transactions |
+| `auth.burnt.com`                 | `auth.testnet.burnt.com`       | Authentication, account settings, and authenticator management     |
+| `aa-api.mainnet.burnt.com`       | `aa-api.testnet.burnt.com`     | Account abstraction API                                            |
 
-**`xion-frontends` note.** That repository is a monorepo, and only
-`apps/xion-app`, serving `app.burnt.com`, is in scope. The other applications it
-builds — `apps/xion-admin` (`dev.burnt.com`) and `apps/faucet`
-(`faucet.xion.burnt.com`) — are out of scope as a developer portal and a faucet
-respectively.
+The testnet hostname authorizes testing; it is not a separate reward-eligible
+asset. Submit the report against the paired production hostname and demonstrate
+why the issue would affect that production application. A weakness caused only
+by testnet-specific configuration, with no corresponding production impact, is
+not reward eligible.
+
+No other alias, preview URL, staging deployment, or test environment is
+authorized by this table.
 
 ### Client SDK
 
@@ -95,9 +91,10 @@ of how many dApps are known to be affected.
 
 ## Proof of Concept
 
-A proof of concept demonstrating the vulnerability is required. **Do not
-demonstrate it against production** — testing production disqualifies the
-report. Run the application locally or against your own deployment.
+A proof of concept demonstrating the vulnerability is required. **Do not test or
+demonstrate it against the production hostname** — testing production
+disqualifies the report. For hosted applications, use the paired testnet hostname
+listed above, a local instance, or infrastructure you control.
 
 Screenshots or a video walkthrough showing end-to-end exploitation are expected
 for High and Critical reports on hosted applications. Reports consisting only of
@@ -111,24 +108,26 @@ running integration that exercises it, is not sufficient on its own.
 
 ## Out of Scope
 
-**Assets**
+**Assets and environments**
 
-- Any hostname not listed above, including testnet and staging hosts
-  (`*.testnet.burnt.com` and equivalents), the developer portal at
-  `dev.burnt.com`, admin interfaces, and internal tooling
-- The faucet at `faucet.xion.burnt.com`
-- The block explorer at `explorer.burnt.com`, `explorer.mainnet.burnt.com`, and
-  `explorer.xion.burnt.com`. It is derived from an upstream open source project
-  and is not currently covered by any program
+**Any production hostname not listed in the scope table is out of scope, and any
+testing hostname not explicitly paired in that table is unauthorized.** The
+following are called out only because they are the cases we are asked about most
+often — the list is illustrative, not exhaustive.
+
+- Testnet, staging, preview, and development environments other than the three
+  authorized testing hostnames listed above
+- Administrative, internal, and operational interfaces
+- Faucets
+- Alternate hostnames that reach an in-scope application. Report the finding
+  against the canonical production hostname in the scope table instead
 - Informational and marketing web properties — see [Websites](websites.md)
-- Decommissioned properties that are no longer in use, including the staking
-  interface at `staking.burnt.com` and its variants
 - Public blockchain RPC, REST, gRPC, and Tendermint RPC endpoints
-- Backend APIs and services other than the account abstraction API named above
+- Backend APIs and services other than the account abstraction API listed above
 - Example apps, demos, and test fixtures in `xion.js`, and any
   `@burnt-labs/*` package version that is not the current release
-- Third-party services and infrastructure, and third-party dApps built with
-  `xion.js`
+- Third-party services and infrastructure, including third-party dApps built
+  with `xion.js`
 
 **Vulnerability classes**
 

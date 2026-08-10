@@ -6,8 +6,8 @@ transactions.
 
 This is a **lower tier than [Applications and SDKs](applications.md)**, and the
 severity ladder below reflects that. If a finding concerns `app.burnt.com`,
-`auth.burnt.com`, `settings.burnt.com`, the account abstraction API, or
-`xion.js`, it belongs to that program instead.
+`auth.burnt.com`, the account abstraction API, or `xion.js`, it belongs to that
+program instead.
 
 Read the [program terms](../README.md) first — reporting channels, reward
 policy, KYC requirement, disclosure rules, and safe harbour apply to this
@@ -18,33 +18,25 @@ program.
 
 ## Assets in Scope
 
-Unlike the other programs, this one is **not defined by an enumerated list**.
-Informational properties come and go — campaign pages, event microsites,
-documentation sections — and an allowlist would go stale faster than we could
-maintain it.
+**A property is in scope only if it is listed below.** This list is exhaustive.
 
-A property is in scope if **all** of the following hold:
+| Hostname           | Property                |
+| ------------------ | ----------------------- |
+| `burnt.com`        | Burnt marketing site    |
+| `www.burnt.com`    | Burnt marketing site    |
+| `verona.dev`       | Verona marketing site   |
+| `www.verona.dev`   | Verona marketing site   |
+| `docs.verona.dev`  | Developer documentation |
 
-1. It is operated by Burnt Labs and reachable on the public internet
-2. It is a production property, not a preview, staging, or testnet deployment
-3. It is **informational or marketing in nature** — it presents content. It does
-   not authenticate users, hold sessions, manage keys or authenticators, or
-   construct, sign, or broadcast transactions
+Any hostname not in this table is out of scope, whatever it appears to be and
+whoever appears to operate it. If you believe a property should be covered, ask
+before testing it — write to
+[security@burnt.com](mailto:security@burnt.com) and we will tell you. Do not
+infer authorization from a property resembling one that is listed.
 
-The third condition is the boundary that matters. The moment a property does any
-of those things it is an application, and it is in scope only if it is named in
-[Applications and SDKs](applications.md) — not here, and not by default.
-
-The clearest examples are the marketing site at `burnt.com` and `www.burnt.com`,
-and the developer documentation at `docs.burnt.com`.
-
-If you are unsure which program a property falls under, report it and say so.
-We would rather triage the question than lose the finding.
-
-**Third-party hosting.** Several of these properties run on third-party
-platforms — `docs.burnt.com` is hosted on GitBook, for example. Only Burnt Labs'
-own content and configuration are in scope. Vulnerabilities in the underlying
-platform should be reported to that platform.
+**Third-party hosting.** Some of these properties run on third-party platforms.
+Only Burnt Labs' own content and configuration are in scope; vulnerabilities in
+an underlying platform should be reported to that platform.
 
 ## Severity
 
@@ -85,18 +77,17 @@ not leave it in place.
 
 **Assets**
 
-- Any property failing one of the three conditions above. In particular:
-  preview, staging, and testnet deployments; the developer portal at
-  `dev.burnt.com`; admin interfaces; faucets; and internal tooling, whether or
-  not it is reachable publicly
+**Any hostname not listed in the scope table is out of scope.** The following
+are called out only because they are asked about most often — the list is
+illustrative, not exhaustive.
+
+- Preview, staging, testnet, and development deployments
+- Administrative, internal, and operational interfaces
 - Anything that authenticates users, holds sessions, manages keys or
   authenticators, or touches transactions. Those are applications, and are in
-  scope only where [Applications and SDKs](applications.md) names them
-- The block explorer. It is derived from an upstream open source project and is
-  not currently covered by any program
-- The GitBook platform, and any third-party analytics, forms, chat widgets, or
-  embeds loaded by these properties
-- Decommissioned properties that are no longer in use
+  scope only where [Applications and SDKs](applications.md) lists them
+- Third-party platforms hosting these properties, and any third-party
+  analytics, forms, chat widgets, or embeds they load
 - Social media accounts, community channels, and content published on
   third-party platforms
 
