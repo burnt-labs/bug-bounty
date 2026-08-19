@@ -10,10 +10,10 @@ program.
 
 ## Assets in Scope
 
-| Contract | Source                                                                                       |
-| -------- | -------------------------------------------------------------------------------------------- |
-| Account  | [`contracts/account`](https://github.com/burnt-labs/contracts/tree/main/contracts/account)     |
-| Treasury | [`contracts/treasury`](https://github.com/burnt-labs/contracts/tree/main/contracts/treasury)   |
+| Contract | Source                                                                                 |
+| -------- | -------------------------------------------------------------------------------------- |
+| Account  | [`burnt-labs/account-contract`](https://github.com/burnt-labs/account-contract)         |
+| Treasury | [`burnt-labs/treasury-contract`](https://github.com/burnt-labs/treasury-contract)       |
 
 **Scope is limited exclusively to the two contracts above.**
 
@@ -82,7 +82,8 @@ behave according to their role.
 
 **Assets**
 
-- `contracts/asset`, `contracts/marketplace`, and `contracts/user_map`
+- The [`burnt-labs/contracts`](https://github.com/burnt-labs/contracts) repository
+  and the contracts remaining in it — `asset`, `marketplace`, and `user_map`
 - Example and demo contracts
 - Third-party contracts deployed on XION by external teams
 - Chain node modules — see [Blockchain / DLT](blockchain.md)
