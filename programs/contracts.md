@@ -82,8 +82,8 @@ behave according to their role.
 
 **Assets**
 
-- The [`burnt-labs/contracts`](https://github.com/burnt-labs/contracts) repository
-  and the contracts remaining in it — `asset`, `marketplace`, and `user_map`
+- Any contract not listed in Assets in Scope, including `asset`,
+  `marketplace`, and `user_map`
 - Example and demo contracts
 - Third-party contracts deployed on XION by external teams
 - Chain node modules — see [Blockchain / DLT](blockchain.md)
