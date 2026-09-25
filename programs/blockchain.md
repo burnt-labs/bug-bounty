@@ -32,11 +32,10 @@ The last three repositories are forks the chain node builds against through
 
 **Only the delta between the fork and its upstream base is in scope.** When the
 fork tag extends an upstream release tag, remove the `-xion.N` suffix to identify
-the base. When no corresponding upstream tag exists, use the merge base between
-the fork tag and the upstream branch documented by that repository's security
-policy. A finding that reproduces on the unmodified upstream base belongs to the
-upstream project, not to this program, and is not eligible here regardless of
-its impact on XION.
+the base. When no corresponding upstream tag exists, use the exact upstream
+commit named in the mapping table below as the base. A finding that reproduces
+on the unmodified upstream base belongs to the upstream project, not to this
+program, and is not eligible here regardless of its impact on XION.
 
 For the fork versions in the current mainnet release, the bases are:
 
@@ -46,8 +45,9 @@ For the fork versions in the current mainnet release, the bases are:
 | `burnt-labs/ibc-go@v10.5.0-xion.1` | `cosmos/ibc-go@v10.5.0` |
 | `burnt-labs/tokenfactory@v0.53.4-xion.2` | `strangelove-ventures/tokenfactory@dacc993` (`v0.50.7-wasmvm2`) |
 
-Each fork's repository policy must document the upstream base before a new
-mainnet fork tag replaces one of these mappings.
+Before a new mainnet fork tag replaces one of these mappings, this table must be
+updated in the same change to name that fork tag's upstream base tag or exact
+commit.
 
 ## Severity
 
@@ -85,8 +85,11 @@ handler chain, module set, and governance configuration matching mainnet. The
 attack should be executed via standard transaction broadcast (`BroadcastTxSync`
 or equivalent) against that node. Broadcast acceptance alone is not sufficient:
 show inclusion in a block, the successful execution result, and the resulting
-state change or security impact. Simulated environments that model chain state
-without running a full node do not demonstrate exploitability.
+state change or security impact. For chain-halt or consensus-failure findings,
+show the triggering transaction or input sequence, the height or round at which
+progress stops or diverges, and the observed halt or failure condition;
+successful execution is not required. Simulated environments that model chain
+state without running a full node do not demonstrate exploitability.
 
 For findings in `barretenberg-go`, the relevant boundary is the **binding
 layer** — how proofs, verification keys, and public inputs cross between Go and
