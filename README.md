@@ -91,7 +91,7 @@ while using authority the role already has.
 
 That cap does **not** apply when a flaw lets an attacker who starts without the
 privilege obtain it or bypass its authorization check, or lets a legitimately
-held limited role perform actions outside its intended permissions. Those
+held limited role exercise authority that role was not granted. Those
 findings are assessed on their demonstrated impact under the applicable
 program's severity definitions.
 
