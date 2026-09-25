@@ -30,11 +30,13 @@ The last three repositories are forks the chain node builds against through
 `replace` directives in [`burnt-labs/xion`](https://github.com/burnt-labs/xion)'s
 `go.mod`. They ship on mainnet under `-xion.N` version tags.
 
-**Only the delta between the fork and its upstream base is in scope.** Determine
-the upstream base from the version tag — `v0.61.10-xion.1` is based on upstream
-`v0.61.10` — and diff against it. A finding that reproduces on the unmodified
-upstream tag belongs to the upstream project, not to this program, and is not
-eligible here regardless of its impact on XION.
+**Only the delta between the fork and its upstream base is in scope.** When the
+fork tag extends an upstream release tag, remove the `-xion.N` suffix to identify
+the base. When no corresponding upstream tag exists, use the merge base between
+the fork tag and the upstream branch documented by that repository's security
+policy. A finding that reproduces on the unmodified upstream base belongs to the
+upstream project, not to this program, and is not eligible here regardless of
+its impact on XION.
 
 ## Severity
 
@@ -70,7 +72,9 @@ with mainnet parameters** — the same setup used by the end-to-end test suite i
 [`burnt-labs/xion`](https://github.com/burnt-labs/xion), with the XION ante
 handler chain, module set, and governance configuration matching mainnet. The
 attack should be executed via standard transaction broadcast (`BroadcastTxSync`
-or equivalent) against that node. Simulated environments that model chain state
+or equivalent) against that node. Broadcast acceptance alone is not sufficient:
+show inclusion in a block, the successful execution result, and the resulting
+state change or security impact. Simulated environments that model chain state
 without running a full node do not demonstrate exploitability.
 
 For findings in `barretenberg-go`, the relevant boundary is the **binding
@@ -92,12 +96,19 @@ deploys a contract that...".
 
 ## Privileged Actor Policy
 
-Attacks requiring a privileged party — governance, a module authority, or a
-validator — to take self-destructive or colluding action are classified at
-**Medium at most**, regardless of downstream impact. This includes validators
-supplying unusual inputs, extreme timestamps, delayed responses, or off-spec
-data to consensus rounds. The threat model assumes privileged actors operate
-within the specified protocol parameters.
+Findings are classified at **Medium at most** when the attack must begin with
+control of governance, a module authority, validator or operator credentials,
+or another privileged role — or requires that holder to cooperate — and the
+demonstrated action is already within that role's intended authority. This
+includes validators deliberately supplying unusual inputs, extreme timestamps,
+delayed responses, or off-spec data to consensus rounds.
+
+The cap does not apply when a flaw lets an attacker who starts without that
+privilege obtain it or bypass its authorization check, or lets a legitimately
+held limited role perform actions outside its intended permissions. Those
+findings are assessed by demonstrated impact. The program does not authorize
+researchers to acquire or exercise production privileges they do not
+legitimately control, or to test with production privileges they do control.
 
 ## Out of Scope
 

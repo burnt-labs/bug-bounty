@@ -25,18 +25,23 @@ submitting.
 
 ### Treasury Fee Grant Scope
 
-Fee grant issuance findings are in scope where an **unprivileged caller can
-extract value from the treasury's XION balance without effective bound**.
+The treasury is a gas sponsor. Its configured `grant_configs` decide which
+callers qualify, and its configured allowance type and limits decide what the
+sponsorship permits. A caller receiving the sponsorship those settings authorize
+is the design working, not an attacker defeating it.
 
-A grant is treated as bounded — and therefore out of scope — only when its
-allowance and expiration **cannot be reset, refreshed, revoked and reissued, or
-otherwise renewed by an unprivileged caller**. Where a configured spend cap can
-be renewed, the cap does not bound total extraction in practice, and the finding
-is in scope.
+Fee-grant findings are in scope when a caller obtains sponsorship the treasury's
+configuration does **not** authorize — for example, by bypassing or forging the
+authz checks, obtaining a grant for an unauthorized grantee, changing the
+configured allowance type or limits, or causing the treasury to sponsor message
+types outside the configured allowance.
 
-Findings against genuinely bounded grant operations are not eligible. That
-design intentionally delegates authorization to the calling application layer,
-and a bounded grant behaving as specified is not a vulnerability.
+Repeated or renewed grants remain out of scope when the caller satisfies the
+configured authorization on every issuance. A per-grant `spend_limit` is not a
+lifetime cap, and aggregate use by many independently authorized callers is not
+an authorization bypass. Consequences of an operator's own allowance choices
+are likewise out of scope. The program covers failures to enforce the configured
+policy, not the policy's intended operation.
 
 ## Severity
 
@@ -60,7 +65,9 @@ modules — do not demonstrate exploitability on their own.
 The proof of concept should run against a **locally running XION node configured
 with mainnet parameters**, using the governance-deployed contract bytecode, the
 XION ante handler chain, and module configuration matching mainnet. The attack
-should be executed via standard transaction broadcast against that node.
+should be executed via standard transaction broadcast against that node. Show
+inclusion in a block, the successful execution result, and the resulting state
+change or security impact; broadcast acceptance alone is not sufficient.
 
 ## Permissioned Chain Policy
 
@@ -73,10 +80,17 @@ exploitable using only contracts already deployed on mainnet.
 
 ## Privileged Actor Policy
 
-Attacks requiring a contract admin, governance, or another privileged party to
-take self-destructive or colluding action are classified at **Medium at most**,
-regardless of downstream impact. The threat model assumes privileged actors
-behave according to their role.
+Findings are classified at **Medium at most** when the attack must begin with
+control of a contract administrator, governance, or another privileged role —
+or requires that holder to cooperate — and the demonstrated action is already
+within that role's intended authority.
+
+The cap does not apply when a flaw lets an attacker who starts without that
+privilege obtain it or bypass its authorization check, or lets a legitimately
+held limited role perform actions outside its intended permissions. Those
+findings are assessed by demonstrated impact. The program does not authorize
+researchers to acquire or exercise production privileges they do not
+legitimately control, or to test with production privileges they do control.
 
 ## Out of Scope
 
