@@ -70,14 +70,16 @@ on a **pre-existing funded account**.
 
 ## Proof of Concept
 
-**An end-to-end proof of concept is required.**
+**An end-to-end proof of concept is required unless this section defines an
+asset-specific alternative.**
 
 Unit tests using `setupKeeper(t)` or similar harnesses bypass transaction
 encoding, routing, and the ante handler chain, and do not demonstrate on-chain
 exploitability on their own.
 
-The proof of concept should run against a **locally running XION node configured
-with mainnet parameters** — the same setup used by the end-to-end test suite in
+Except for `barretenberg-go` binding-layer findings described below, the proof
+of concept should run against a **locally running XION node configured with
+mainnet parameters** — the same setup used by the end-to-end test suite in
 [`burnt-labs/xion`](https://github.com/burnt-labs/xion), with the XION ante
 handler chain, module set, and governance configuration matching mainnet. The
 attack should be executed via standard transaction broadcast (`BroadcastTxSync`
@@ -93,7 +95,9 @@ full node do not demonstrate exploitability.
 For findings in `barretenberg-go`, the relevant boundary is the **binding
 layer** — how proofs, verification keys, and public inputs cross between Go and
 the underlying C library. Include the exact proof, verification key, and public
-input bytes that produce the incorrect result, along with a runnable Go test.
+input bytes that produce the incorrect result, along with a runnable Go test;
+for this asset, that is the required proof of concept even when no on-chain
+transaction path is needed to demonstrate the bug.
 
 ## Permissioned Chain Policy
 
