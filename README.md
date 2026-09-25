@@ -85,8 +85,9 @@ Pre-existing privileged access is not itself an exploit primitive. Where a
 program caps findings that require a privileged actor, the cap applies when the
 attack must begin with control of governance, an administrator or module
 authority, validator or operator credentials, or another privileged role — or
-requires that holder to cooperate — and the demonstrated action is already
-within that role's intended authority.
+requires that holder to cooperate — and the demonstrated impact depends on that
+holder acting self-destructively, outside normal operation, or in collusion
+while using authority the role already has.
 
 That cap does **not** apply when a flaw lets an attacker who starts without the
 privilege obtain it or bypass its authorization check, or lets a legitimately

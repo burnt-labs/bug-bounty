@@ -38,6 +38,17 @@ policy. A finding that reproduces on the unmodified upstream base belongs to the
 upstream project, not to this program, and is not eligible here regardless of
 its impact on XION.
 
+For the fork versions in the current mainnet release, the bases are:
+
+| Fork tag | Upstream base |
+| -------- | ------------- |
+| `burnt-labs/wasmd@v0.61.10-xion.1` | `CosmWasm/wasmd@v0.61.10` |
+| `burnt-labs/ibc-go@v10.5.0-xion.1` | `cosmos/ibc-go@v10.5.0` |
+| `burnt-labs/tokenfactory@v0.53.4-xion.2` | `strangelove-ventures/tokenfactory@dacc993` (`v0.50.7-wasmvm2`) |
+
+Each fork's repository policy must document the upstream base before a new
+mainnet fork tag replaces one of these mappings.
+
 ## Severity
 
 | Severity     | Description                                                                                                                                                                                                                                    |
@@ -99,9 +110,10 @@ deploys a contract that...".
 Findings are classified at **Medium at most** when the attack must begin with
 control of governance, a module authority, validator or operator credentials,
 or another privileged role — or requires that holder to cooperate — and the
-demonstrated action is already within that role's intended authority. This
-includes validators deliberately supplying unusual inputs, extreme timestamps,
-delayed responses, or off-spec data to consensus rounds.
+demonstrated impact depends on that holder acting self-destructively, outside
+normal operation, or in collusion while using authority the role already has.
+This includes validators deliberately supplying unusual inputs, extreme
+timestamps, delayed responses, or off-spec data to consensus rounds.
 
 The cap does not apply when a flaw lets an attacker who starts without that
 privilege obtain it or bypass its authorization check, or lets a legitimately

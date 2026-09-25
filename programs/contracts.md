@@ -82,8 +82,9 @@ exploitable using only contracts already deployed on mainnet.
 
 Findings are classified at **Medium at most** when the attack must begin with
 control of a contract administrator, governance, or another privileged role —
-or requires that holder to cooperate — and the demonstrated action is already
-within that role's intended authority.
+or requires that holder to cooperate — and the demonstrated impact depends on
+that holder acting self-destructively, outside normal operation, or in collusion
+while using authority the role already has.
 
 The cap does not apply when a flaw lets an attacker who starts without that
 privilege obtain it or bypass its authorization check, or lets a legitimately
@@ -110,7 +111,9 @@ legitimately control, or to test with production privileges they do control.
 - Attacks requiring malicious contract deployment on mainnet
 - Denial of service requiring sustained attacker resource expenditure
   proportional to the harm caused
-- Fee grant operations that are bounded as defined above
+- Fee-grant issuance where the caller satisfies the configured authorization
+  for that issuance and the resulting allowance preserves the configured type,
+  limits, and message restrictions
 - Governance attacks requiring a malicious proposal to pass
 - Theoretical vulnerabilities without a working end-to-end proof of concept
 - Attacks where the attacker's cost to execute exceeds the demonstrable harm to
