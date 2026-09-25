@@ -16,7 +16,6 @@ program.
 | [`burnt-labs/abstract-account`](https://github.com/burnt-labs/abstract-account) | Abstract account module and authenticator contract infrastructure |
 | [`burnt-labs/barretenberg-go`](https://github.com/burnt-labs/barretenberg-go) | Go bindings and proof verification wrappers for the Barretenberg ZK proving library |
 | [`burnt-labs/wasmd`](https://github.com/burnt-labs/wasmd) | XION's fork of `CosmWasm/wasmd` — the contract execution module. **Burnt Labs' patches only** |
-| [`burnt-labs/ibc-go`](https://github.com/burnt-labs/ibc-go) | XION's fork of `cosmos/ibc-go`, `08-wasm` light client. **Burnt Labs' patches only** |
 | [`burnt-labs/tokenfactory`](https://github.com/burnt-labs/tokenfactory) | XION's fork of `strangelove-ventures/tokenfactory`. **Burnt Labs' patches only** |
 
 Scope applies to the current mainnet release. Findings affecting only deprecated
@@ -26,7 +25,7 @@ Verify exploitability against the currently deployed version before submitting.
 
 ### Fork Scope
 
-The last three repositories are forks the chain node builds against through
+The last two repositories are forks the chain node builds against through
 `replace` directives in [`burnt-labs/xion`](https://github.com/burnt-labs/xion)'s
 `go.mod`. They ship on mainnet under `-xion.N` version tags.
 
@@ -41,9 +40,8 @@ For the fork versions in the current mainnet release, the bases are:
 
 | Fork tag | Upstream base |
 | -------- | ------------- |
-| `burnt-labs/wasmd@v0.61.10-xion.1` | `CosmWasm/wasmd@v0.61.10` |
-| `burnt-labs/ibc-go@v10.5.0-xion.1` | `cosmos/ibc-go@v10.5.0` |
-| `burnt-labs/tokenfactory@v0.53.4-xion.2` | `strangelove-ventures/tokenfactory@dacc993` (`v0.50.7-wasmvm2`) |
+| `burnt-labs/wasmd@v0.61.14-xion.3` | `CosmWasm/wasmd@v0.61.14` |
+| `burnt-labs/tokenfactory@v0.53.4-xion.3` | `strangelove-ventures/tokenfactory@dacc99329b029248b965dcb025c869bc5cd7296d` (`v0.50.7-wasmvm2`) |
 
 Before a new mainnet fork tag replaces one of these mappings, this table must be
 updated in the same change to name that fork tag's upstream base tag or exact
