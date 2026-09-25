@@ -43,7 +43,7 @@ For the fork versions in the current mainnet release, the bases are:
 | -------- | ------------- |
 | `burnt-labs/wasmd@v0.61.10-xion.1` | `CosmWasm/wasmd@v0.61.10` |
 | `burnt-labs/ibc-go@v10.5.0-xion.1` | `cosmos/ibc-go@v10.5.0` |
-| `burnt-labs/tokenfactory@v0.53.4-xion.2` | `strangelove-ventures/tokenfactory@dacc993` (`v0.50.7-wasmvm2`) |
+| `burnt-labs/tokenfactory@v0.53.4-xion.2` | `strangelove-ventures/tokenfactory@dacc99329b029248b965dcb025c869bc5cd7296d` (`v0.50.7-wasmvm2`) |
 
 Before a new mainnet fork tag replaces one of these mappings, this table must be
 updated in the same change to name that fork tag's upstream base tag or exact
