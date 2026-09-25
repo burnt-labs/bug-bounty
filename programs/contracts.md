@@ -66,8 +66,11 @@ The proof of concept should run against a **locally running XION node configured
 with mainnet parameters**, using the governance-deployed contract bytecode, the
 XION ante handler chain, and module configuration matching mainnet. The attack
 should be executed via standard transaction broadcast against that node. Show
-inclusion in a block, the successful execution result, and the resulting state
-change or security impact; broadcast acceptance alone is not sufficient.
+inclusion in a block, the execution result, and the resulting state change or
+security impact; broadcast acceptance alone is not sufficient. When transaction
+failure is itself the claimed disruption, a nonzero execution result is
+acceptable, but the proof must show the included failing transaction and its
+observable impact on otherwise valid contract operations.
 
 ## Permissioned Chain Policy
 
