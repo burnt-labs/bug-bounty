@@ -97,15 +97,12 @@ input bytes that produce the incorrect result, along with a runnable Go test.
 
 ## Permissioned Chain Policy
 
-XION mainnet operates with `code_upload_access: Nobody`. Contract deployment
-requires a governance proposal. **This is a fundamental architectural
-constraint, not a bypass target.**
-
-Any attack vector requiring an attacker to deploy a malicious contract on
-mainnet is out of scope, regardless of technical validity. This includes
-amplification attacks via attacker-deployed contracts, exploit chains initiated
-from attacker-deployed contracts, and any scenario beginning with "an attacker
-deploys a contract that...".
+XION mainnet operates with `code_upload_access: Nobody`. Uploading new contract
+code requires governance approval. An attack that depends on uploading
+attacker-controlled contract code to mainnet is out of scope. A finding that is
+exploitable through code already approved for mainnet is not excluded by this
+rule, including when the proof of concept instantiates or controls a new
+contract from an approved code ID.
 
 ## Privileged Actor Policy
 
@@ -140,7 +137,8 @@ legitimately control, or to test with production privileges they do control.
 
 **Vulnerability classes**
 
-- Attacks requiring malicious contract deployment on mainnet
+- Attacks requiring new attacker-controlled contract code to be uploaded to
+  mainnet
 - Denial of service of any form, including single-transaction resource
   exhaustion, node crashes, and chain halts recoverable via a software patch,
   coordinated validator restart, or governance parameter update. Chain halts
