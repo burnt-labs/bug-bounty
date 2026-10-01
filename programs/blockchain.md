@@ -45,7 +45,7 @@ eligible here regardless of its impact on XION.
 | **MEDIUM**   | Limited fund loss or temporary disruption requiring specific preconditions. Attacks requiring privileged-party cooperation. Partial authentication bypass requiring secondary conditions                                                        |
 | **LOW**      | Valid, reproducible code-level issue with no direct risk to funds or chain safety, representing a meaningful hardening opportunity. Must include a specific code reference                                                                      |
 
-Only **High** and **Critical** are reward eligible.
+**Critical**, **High**, **Medium**, and **Low** findings are all reward eligible.
 
 ### Authentication Impact Scope
 

@@ -53,7 +53,8 @@ Severity is assessed on that path, not on the website in isolation.
 | **MEDIUM**   | Reflected or self-limiting content injection requiring an unusual link or a security-relevant victim action. Exposure of non-public but non-sensitive information. Access control bypass on a content management path              |
 | **LOW**      | Valid security issue with no demonstrated path to user harm, representing a meaningful hardening opportunity                                                                                                                       |
 
-Only **High** is reward eligible in this program.
+**High**, **Medium**, and **Low** findings are reward eligible in this program.
+Critical is not reachable here — see the severity table above.
 
 A finding is not High merely because injection is possible. The report must
 carry it through to the consequence — show the drainer, the harvest, or the

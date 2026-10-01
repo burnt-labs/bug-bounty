@@ -47,7 +47,7 @@ and a bounded grant behaving as specified is not a vulnerability.
 | **MEDIUM**   | Limited fund loss requiring specific preconditions. Attacks requiring privileged-party cooperation. Temporary disruption recoverable by governance                                                                                                                                                              |
 | **LOW**      | Valid, reproducible code-level issue with no direct risk to funds, representing a meaningful hardening opportunity. Must include a specific code reference                                                                                                                                                       |
 
-Only **High** and **Critical** are reward eligible.
+**Critical**, **High**, **Medium**, and **Low** findings are all reward eligible.
 
 ## Proof of Concept
 
