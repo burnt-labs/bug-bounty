@@ -79,6 +79,28 @@ Severity is assessed by Burnt Labs against the definitions below and the
 program-specific definitions in each document. We assess reports as submitted;
 we do not reclassify a report to a different severity on a reporter's behalf.
 
+## Privileged Access
+
+Pre-existing privileged access is not itself an exploit primitive. Where a
+program caps findings that require a privileged actor, the cap applies when the
+attack must begin with control of governance, an administrator or module
+authority, validator or operator credentials, or another privileged role — or
+requires that holder to cooperate — and the demonstrated impact depends on that
+holder acting self-destructively, outside normal operation, or in collusion
+while using authority the role already has.
+
+That cap does **not** apply when a flaw lets an attacker who starts without the
+privilege obtain it or bypass its authorization check, or lets a legitimately
+held limited role exercise authority that role was not granted. Those
+findings are assessed on their demonstrated impact under the applicable
+program's severity definitions.
+
+Nothing in this program authorizes a researcher to acquire, borrow, compromise,
+or exercise production credentials or privileges they do not legitimately
+control. Reproduce privileged-role findings only with test roles and keys in a
+local environment or infrastructure you control. Legitimately holding a
+production role does not authorize testing with it against production.
+
 ## Severity
 
 | Severity     | Description                                                                  | Reward eligible |
@@ -128,8 +150,10 @@ inputs, steps, or code that exhibit it — is not actionable.
    details and credit
 
 Active exploitation, or confirmed attacker awareness of an unpatched
-vulnerability, escalates the issue to Critical handling regardless of its
-original classification.
+vulnerability, escalates the issue to Critical **response handling** —
+prioritization, coordination, and disclosure timing — regardless of its
+original classification. That escalation does not change the finding's
+severity assessment or reward eligibility.
 
 Where a fix requires a network upgrade, additional time may be needed to raise a
 governance proposal and complete the upgrade.
