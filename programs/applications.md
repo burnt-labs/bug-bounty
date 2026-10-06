@@ -63,7 +63,7 @@ a local checkout with modified configuration.
 | **MEDIUM**   | Attacks requiring the victim to take a meaningful, security-relevant action — clicking through a confirmation, explicitly granting access, or following multi-step instructions. Limited data exposure or access control bypass requiring specific preconditions. CSRF with demonstrated impact on account state |
 | **LOW**      | Valid security issue with no direct risk to accounts or user data, representing a meaningful hardening opportunity                                                                                                                                                                                       |
 
-Only **High** and **Critical** are reward eligible.
+**Critical**, **High**, **Medium**, and **Low** findings are all reward eligible.
 
 Reports where the victim must be tricked into explicitly granting access,
 authorizing a transaction, or clicking through a confirmation are **not**

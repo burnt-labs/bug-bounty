@@ -64,8 +64,10 @@ disclosure before a patch is available increases the harm to users.
 **We do not publish reward amounts.** Bounties are determined during the
 disclosure process, after severity has been assessed against demonstrated impact.
 
-- Bounties are awarded for findings assessed as **High** or **Critical**. Medium
-  and Low findings are valued and will be fixed, but are not rewarded.
+- Bounties are awarded for findings assessed as **Critical**, **High**,
+  **Medium**, or **Low**. Reward amounts are not yet established and may differ
+  by program, repository, or asset category — determined during the disclosure
+  process.
 - Only production assets explicitly named in a program above are eligible.
   Named testing endpoints authorize safe reproduction but are not separately
   reward eligible.
@@ -107,8 +109,8 @@ production role does not authorize testing with it against production.
 | ------------ | ---------------------------------------------------------------------------- | --------------- |
 | **CRITICAL** | Immediate threat to critical systems — funds at risk, network compromise      | Yes             |
 | **HIGH**     | Significant impact on major functionality or security controls               | Yes             |
-| **MEDIUM**   | Impacts minor features or exposes non-sensitive data                          | No              |
-| **LOW**      | Minimal impact or informational                                               | No              |
+| **MEDIUM**   | Impacts minor features or exposes non-sensitive data                          | Yes             |
+| **LOW**      | Minimal impact or informational                                               | Yes             |
 
 Each program narrows these definitions for its own assets. Where they differ,
 the program document governs.
