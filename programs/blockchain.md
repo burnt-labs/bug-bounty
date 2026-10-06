@@ -1,8 +1,8 @@
 # Bug Bounty — Blockchain / DLT
 
 Covers the XION chain node and its supporting protocol infrastructure — the
-custom Cosmos SDK modules, the abstract account system, and the ZK proof
-verification bindings.
+custom Cosmos SDK modules, the vendored abstract account module, and the ZK
+proof verification bindings.
 
 Read the [program terms](../README.md) first — reporting channels, reward
 policy, KYC requirement, disclosure rules, and safe harbour apply to this
@@ -12,8 +12,7 @@ program.
 
 | Repository | Covers |
 | ---------- | ------ |
-| [`burnt-labs/xion`](https://github.com/burnt-labs/xion) | XION chain node and all custom Cosmos SDK modules |
-| [`burnt-labs/abstract-account`](https://github.com/burnt-labs/abstract-account) | Abstract account module and authenticator contract infrastructure |
+| [`burnt-labs/xion`](https://github.com/burnt-labs/xion) | XION chain node and all custom Cosmos SDK modules, including the vendored `x/abstractaccount` module and authenticator contract infrastructure |
 | [`burnt-labs/barretenberg-go`](https://github.com/burnt-labs/barretenberg-go) | Go bindings and proof verification wrappers for the Barretenberg ZK proving library |
 | [`burnt-labs/wasmd`](https://github.com/burnt-labs/wasmd) | XION's fork of `CosmWasm/wasmd` — the contract execution module. **Burnt Labs' patches only** |
 | [`burnt-labs/ibc-go`](https://github.com/burnt-labs/ibc-go) | XION's fork of `cosmos/ibc-go`, `08-wasm` light client. **Burnt Labs' patches only** |
