@@ -4,9 +4,9 @@ Covers the XION chain node and its supporting protocol infrastructure — the
 custom Cosmos SDK modules, the vendored abstract account module, and the ZK
 proof verification bindings.
 
-Read the [program terms](../README.md) first — reporting channels, reward
-policy, KYC requirement, disclosure rules, and safe harbour apply to this
-program.
+Read the [program terms](../README.md) first — the program is currently
+paused, and its reporting channels, disclosure rules, and safe harbour apply to
+this program.
 
 ## Assets in Scope
 
@@ -54,8 +54,6 @@ commit.
 | **HIGH**     | Theft or freezing of user funds affecting individual accounts. Significant authentication bypass with demonstrated exploitability                                                                                                              |
 | **MEDIUM**   | Limited fund loss or temporary disruption requiring specific preconditions. Privileged-party cooperation where the demonstrated impact uses authority the role already has (see Privileged Actor Policy). Partial authentication bypass requiring secondary conditions |
 | **LOW**      | Valid, reproducible code-level issue with no direct risk to funds or chain safety, representing a meaningful hardening opportunity. Must include a specific code reference                                                                      |
-
-**Critical**, **High**, **Medium**, and **Low** findings are all reward eligible.
 
 ### Authentication Impact Scope
 

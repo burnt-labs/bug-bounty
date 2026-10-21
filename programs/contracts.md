@@ -4,9 +4,9 @@ Covers the core smart contracts deployed on the XION blockchain. These are
 governance-deployed and form the foundation of XION's account abstraction and
 fee infrastructure.
 
-Read the [program terms](../README.md) first — reporting channels, reward
-policy, KYC requirement, disclosure rules, and safe harbour apply to this
-program.
+Read the [program terms](../README.md) first — the program is currently
+paused, and its reporting channels, disclosure rules, and safe harbour apply to
+this program.
 
 ## Assets in Scope
 
@@ -51,8 +51,6 @@ policy, not the policy's intended operation.
 | **HIGH**     | Theft or freezing of funds affecting individual accounts. Authentication bypass with demonstrated exploitability against an existing account. Permanent disruption of core contract functionality                                                                                                                |
 | **MEDIUM**   | Limited fund loss requiring specific preconditions. Privileged-party cooperation where the demonstrated impact uses authority the role already has (see Privileged Actor Policy). Temporary disruption recoverable by governance |
 | **LOW**      | Valid, reproducible code-level issue with no direct risk to funds, representing a meaningful hardening opportunity. Must include a specific code reference                                                                                                                                                       |
-
-**Critical**, **High**, **Medium**, and **Low** findings are all reward eligible.
 
 ## Proof of Concept
 
