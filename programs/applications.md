@@ -7,14 +7,14 @@ harm, credential compromise, or unauthorized transaction execution.
 Informational and marketing web properties are covered separately, at a lower
 tier — see [Websites](websites.md).
 
-Read the [program terms](../README.md) first — reporting channels, reward
-policy, KYC requirement, disclosure rules, and safe harbour apply to this
-program.
+Read the [program terms](../README.md) first — the program is currently
+paused, and its reporting channels, disclosure rules, and safe harbour apply to
+this program.
 
 > **Reporting channel.** Report findings against the hosted applications to
 > [security@burnt.com](mailto:security@burnt.com). For `xion.js`, use GitHub
-> private vulnerability reporting on that repository. Eligibility follows the
-> asset, not the channel — the choice of channel does not affect it.
+> private vulnerability reporting on that repository. Scope follows the asset,
+> not the channel — the choice of channel does not affect it.
 
 ## Assets in Scope
 
@@ -34,11 +34,11 @@ paired testnet hostname, a local instance, or infrastructure you control.
 | `auth.burnt.com`                 | `auth.testnet.burnt.com`       | Authentication, account settings, and authenticator management     |
 | `aa-api.mainnet.burnt.com`       | `aa-api.testnet.burnt.com`     | Account abstraction API                                            |
 
-The testnet hostname authorizes testing; it is not a separate reward-eligible
-asset. Submit the report against the paired production hostname and demonstrate
-why the issue would affect that production application. A weakness caused only
-by testnet-specific configuration, with no corresponding production impact, is
-not reward eligible.
+The testnet hostname authorizes testing; it is not a separate asset. Submit the
+report against the paired production hostname and demonstrate why the issue
+would affect that production application. A weakness caused only by
+testnet-specific configuration, with no corresponding production impact, is out
+of scope.
 
 No other alias, preview URL, staging deployment, or test environment is
 authorized by this table.
@@ -62,8 +62,6 @@ a local checkout with modified configuration.
 | **HIGH**     | Account or session compromise requiring limited, non-suspicious user interaction such as visiting a link or loading a page. Cross-site scripting with demonstrated ability to initiate or manipulate transactions. Significant data exposure affecting individual users                                    |
 | **MEDIUM**   | Attacks requiring the victim to take a meaningful, security-relevant action — clicking through a confirmation, explicitly granting access, or following multi-step instructions. Limited data exposure or access control bypass requiring specific preconditions. CSRF with demonstrated impact on account state |
 | **LOW**      | Valid security issue with no direct risk to accounts or user data, representing a meaningful hardening opportunity                                                                                                                                                                                       |
-
-**Critical**, **High**, **Medium**, and **Low** findings are all reward eligible.
 
 Reports where the victim must be tricked into explicitly granting access,
 authorizing a transaction, or clicking through a confirmation are **not**
@@ -98,7 +96,7 @@ listed above, a local instance, or infrastructure you control.
 
 Screenshots or a video walkthrough showing end-to-end exploitation are expected
 for High and Critical reports on hosted applications. Reports consisting only of
-automated scanner output, without demonstrated exploitability, are not rewarded.
+automated scanner output, without demonstrated exploitability, are not actionable.
 
 For `xion.js`, the proof of concept is a **minimal dApp that consumes the
 published package** and exhibits the defect, plus the package version and the

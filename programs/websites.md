@@ -9,9 +9,9 @@ severity ladder below reflects that. If a finding concerns `app.burnt.com`,
 `auth.burnt.com`, the account abstraction API, or `xion.js`, it belongs to that
 program instead.
 
-Read the [program terms](../README.md) first — reporting channels, reward
-policy, KYC requirement, disclosure rules, and safe harbour apply to this
-program.
+Read the [program terms](../README.md) first — the program is currently
+paused, and its reporting channels, disclosure rules, and safe harbour apply to
+this program.
 
 > **Reporting channel.** Report findings in this program to
 > [security@burnt.com](mailto:security@burnt.com).
@@ -29,10 +29,8 @@ program.
 | `docs.verona.dev`  | Developer documentation |
 
 Any hostname not in this table is out of scope, whatever it appears to be and
-whoever appears to operate it. If you believe a property should be covered, ask
-before testing it — write to
-[security@burnt.com](mailto:security@burnt.com) and we will tell you. Do not
-infer authorization from a property resembling one that is listed.
+whoever appears to operate it. Do not test a property that is not listed, and do
+not infer authorization from a property resembling one that is listed.
 
 **Third-party hosting.** Some of these properties run on third-party platforms.
 Only Burnt Labs' own content and configuration are in scope; vulnerabilities in
@@ -53,7 +51,6 @@ Severity is assessed on that path, not on the website in isolation.
 | **MEDIUM**   | Reflected or self-limiting content injection requiring an unusual link or a security-relevant victim action. Exposure of non-public but non-sensitive information. Access control bypass on a content management path              |
 | **LOW**      | Valid security issue with no demonstrated path to user harm, representing a meaningful hardening opportunity                                                                                                                       |
 
-**High**, **Medium**, and **Low** findings are reward eligible in this program.
 Critical is not reachable here — see the severity table above.
 
 A finding is not High merely because injection is possible. The report must
@@ -68,7 +65,7 @@ report. Run the property locally or against your own deployment.
 
 Screenshots or a video walkthrough are expected for High reports, showing the
 full path from injection to consequence. Reports consisting only of automated
-scanner output, without demonstrated exploitability, are not rewarded.
+scanner output, without demonstrated exploitability, are not actionable.
 
 For a subdomain takeover claim, include the dangling record and evidence you
 could serve content — do not serve anything beyond a benign proof file, and do
